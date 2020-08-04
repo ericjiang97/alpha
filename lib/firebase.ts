@@ -4,6 +4,7 @@ import 'firebase/firestore';
 import 'firebase/functions';
 import 'firebase/storage';
 import 'firebase/messaging';
+import googleAuthProvider from './authProviders/googleAuthProvider';
 
 const firebaseConfig = {
   apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
@@ -14,14 +15,30 @@ const firebaseConfig = {
   messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
   appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
 };
-export const fbApp = firebase.initializeApp(firebaseConfig);
 
-export const useAuth = () => fbApp.auth();
+try {
+  firebase.initializeApp(firebaseConfig);
+} catch (error) {
+  /*
+   * We skip the "already exists" message which is
+   * not an actual error when we're hot-reloading.
+   */
+  if (!/already exists/u.test(error.message)) {
+    // eslint-disable-next-line no-console
+    console.error('Firebase admin initialization error', error.stack);
+  }
+}
 
-export const useFirestore = () => fbApp.firestore();
+export const useAuth = () => firebase.auth();
 
-export const useStorage = () => fbApp.storage();
+export const useFirestore = () => firebase.firestore();
 
-export const useFunctions = () => fbApp.functions();
+export const useStorage = () => firebase.storage();
 
-export const doSignOut = () => fbApp.auth().signOut();
+export const useFunctions = () => firebase.functions();
+
+export const doSignInWithGoogle = () => {
+  return firebase.auth().signInWithRedirect(googleAuthProvider);
+};
+
+export const doSignOut = () => firebase.auth().signOut();

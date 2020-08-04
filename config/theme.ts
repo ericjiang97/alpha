@@ -10,6 +10,7 @@ import {
   faBars,
   faBookOpen,
   faDownload,
+  faUser,
 } from '@fortawesome/free-solid-svg-icons';
 import {
   faBootstrap,
@@ -27,7 +28,7 @@ import {
 const IconConfig: IconThemeConfig = {
   iconSets: [
     {
-      icons: [faBars, faDownload, faSun, faMoon, faEnvelope, faRss, faCopy, faShare, faEdit, faBookOpen],
+      icons: [faUser, faBars, faDownload, faSun, faMoon, faEnvelope, faRss, faCopy, faShare, faEdit, faBookOpen],
       prefix: 'solid-',
       type: 'font-awesome',
     },

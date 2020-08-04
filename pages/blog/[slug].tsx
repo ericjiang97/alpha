@@ -11,6 +11,7 @@ import SITE_CONFIG from '../../config';
 import { Heading, Label, Paragraph, Container, Button, Stack, Link, useColorMode } from 'bumbag';
 import HeroBase from '../../components/HeroBase';
 import UtterancesComments from '../../components/UtterancesComments';
+import PostsContainer from '../../containers/PostsContainer';
 
 export default function BlogTemplate(props: StaticBlogPost) {
   const { colorMode } = useColorMode();
@@ -60,6 +61,7 @@ export default function BlogTemplate(props: StaticBlogPost) {
         </Link>
       </Container>
       <Container>
+        <PostsContainer slug={slug} />
         <UtterancesComments isDarkTheme={colorMode === 'dark'} />
       </Container>
     </PageLayout>
