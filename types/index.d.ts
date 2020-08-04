@@ -27,3 +27,5 @@ export interface Project {
   screenshotUrl?: string;
   technologies?: ProjectTechology[];
 }
+
+export type Nullable<T> = T | null;

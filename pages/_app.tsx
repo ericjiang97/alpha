@@ -6,6 +6,7 @@ import 'react-lazy-load-image-component/src/effects/blur.css';
 import Head from 'next/head';
 import theme from '../config/theme';
 import Footer from '../components/footer';
+import { AuthenticationProvider } from '../providers/AuthProvider';
 
 const RootComponent: React.FC = ({ children }) => {
   return (
@@ -51,10 +52,12 @@ class MyApp extends App {
     const { Component, pageProps } = this.props;
     return (
       <BumbagProvider theme={theme} collapseBelow="desktop">
-        <RootComponent>
-          <Component {...pageProps}></Component>
-        </RootComponent>
-        <ToastManager />
+        <AuthenticationProvider>
+          <RootComponent>
+            <Component {...pageProps}></Component>
+          </RootComponent>
+          <ToastManager />
+        </AuthenticationProvider>
       </BumbagProvider>
     );
   }
