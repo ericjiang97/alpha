@@ -1,16 +1,20 @@
 import React, { useContext } from 'react';
 
-import { Button, TopNav, useColorMode, Icon, useBreakpoint, Popover, Avatar, Heading, Switch } from 'bumbag';
+import { Button, TopNav, useColorMode, Icon, useBreakpoint, Popover, Avatar, Switch } from 'bumbag';
 import SideBar from './SideBar';
-import { doSignInWithGoogle, doSignOut } from '../lib/firebase';
+import { doSignOut } from '../lib/firebase';
 import AuthenticationContext from '../contexts/AuthenticationContext';
+import { useRouter } from 'next/dist/client/router';
 
 const Nav: React.FC = () => {
   const { colorMode, setColorMode } = useColorMode();
   const { isLoaded, user } = useContext(AuthenticationContext);
+  const router = useRouter();
   const isDesktopOrLarger = useBreakpoint('min-desktop');
 
   const isLightMode = colorMode === 'light';
+
+  const buttonProps = Button.useProps({ variant: 'ghost' });
 
   return (
     <TopNav>
@@ -37,8 +41,8 @@ const Nav: React.FC = () => {
       )}
       <TopNav.Section marginRight="major-2">
         <TopNav.Item>
-          <Popover.State placement="bottom-end">
-            <Popover.Disclosure use={Button}>
+          <Popover.State placement="bottom">
+            <Popover.Disclosure use={Button} {...buttonProps}>
               {!user ? (
                 <Icon icon="solid-user" />
               ) : user.photoURL ? (
@@ -52,12 +56,12 @@ const Nav: React.FC = () => {
                 />
               )}
             </Popover.Disclosure>
-            <Popover title={user ? `Welcome ${user.displayName}` : 'Login to Continue!'} usePortal>
-              <Heading use="h6">User Settings</Heading>
+            <Popover title={user ? `Welcome ${user.displayName}` : 'Login to Continue!'}>
+              {/* <Heading use="h6">User Settings</Heading> */}
               <Switch
                 label={`${isLightMode ? 'Light' : 'Dark'} Mode`}
                 checked={isLightMode}
-                onClick={() => {
+                onChange={() => {
                   if (isLightMode) {
                     setColorMode('dark');
                   } else {
@@ -66,7 +70,7 @@ const Nav: React.FC = () => {
                 }}
               />
               <hr />
-              {isLoaded && !user && <Button onClick={() => doSignInWithGoogle()}>Login with Google</Button>}
+              {isLoaded && !user && <Button onClick={() => router.push('/login')}>Login with Google</Button>}
               {user && <Button onClick={() => doSignOut()}>Log out</Button>}
             </Popover>
           </Popover.State>

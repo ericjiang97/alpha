@@ -1,6 +1,6 @@
 import React from 'react';
 import Head from 'next/head';
-import { PageContent, PageWithHeader, Callout, Container, Link } from 'bumbag';
+import { PageContent, PageWithHeader } from 'bumbag';
 import Nav from '../../components/nav';
 import SITE_CONFIG from '../../config';
 
@@ -51,17 +51,7 @@ const PageChildren: React.FC<PageInnerProps> = ({
       </Head>
       {banner && banner}
       <div style={{ display: 'flex', flexDirection: 'column', flex: 1 }}>
-        <PageContent flex={1}>
-          <Container>
-            <Callout type="info" title="Warning: Experimental Site" maxWidth="800px" width="100%" marginY="1rem">
-              This site is experimental, please report any bugs to{' '}
-              <Link href="https://github.com/ericjiang97/nextjs-personal/issues">
-                https://github.com/ericjiang97/nextjs-personal/issues
-              </Link>
-            </Callout>
-          </Container>
-          {inChildrenInContainer && children}
-        </PageContent>
+        <PageContent flex={1}>{inChildrenInContainer && children}</PageContent>
         {!inChildrenInContainer && children}
       </div>
     </>
