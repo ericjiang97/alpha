@@ -2,7 +2,7 @@ export interface BlogPostFrontmatter {
   title: string;
   author: string;
   date: string;
-  summary?: string;
+  summary: string;
   tags?: string[];
   category: string;
   coverImageUrl?: string;
