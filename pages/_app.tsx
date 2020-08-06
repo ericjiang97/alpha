@@ -51,7 +51,7 @@ class MyApp extends App {
   render() {
     const { Component, pageProps } = this.props;
     return (
-      <BumbagProvider theme={theme} collapseBelow="desktop">
+      <BumbagProvider theme={theme} collapseBelow="desktop" isSSR>
         <AuthenticationProvider>
           <RootComponent>
             <Component {...pageProps}></Component>

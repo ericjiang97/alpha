@@ -2362,18 +2362,18 @@ builtin-status-codes@^3.0.0:
   resolved "https://registry.yarnpkg.com/builtin-status-codes/-/builtin-status-codes-3.0.0.tgz#85982878e21b98e1c66425e03d0174788f569ee8"
   integrity sha1-hZgoeOIbmOHGZCXgPQF0eI9Wnug=
 
-bumbag-addon-markdown@^1.0.2:
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/bumbag-addon-markdown/-/bumbag-addon-markdown-1.0.2.tgz#1bf5b26b539abdc429a6ac54dbf49fd177f4e332"
-  integrity sha512-Rnw7CbqYieqACdM4ahO1MmbpEXrEvPVrhr5E9KkjzLsm9hwpq+OI7FeKnMf7UdyfsnpdBU3dC/u5u67yezgjlA==
+bumbag-addon-markdown@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/bumbag-addon-markdown/-/bumbag-addon-markdown-1.0.3.tgz#2d2e3a88c796a9faf107014add0de0a2400352e8"
+  integrity sha512-t7IN03AZevSL37XKV+bU/xH8r9v+rsvtvWEYdMZ09OBWvzOeUzWm/qo8TW0amCHO4OJfT1gRQag9KPpoTk0FYg==
   dependencies:
     lodash "4.17.19"
     markdown-react-js "1.0.2"
 
-bumbag@^1.0.2:
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/bumbag/-/bumbag-1.0.2.tgz#3231509431101d593b69750299fcbf62064a4254"
-  integrity sha512-Am/q8+YKPiK5PEHE8Xpmy9GCuCvo3TA5zgCW2jcNZhWcmYhbRCT0fhY/WojH0dQH4K30B/lVGaHt+21iTAKbZA==
+bumbag@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/bumbag/-/bumbag-1.0.3.tgz#64a271955e31c3ba942a4e390b38bec730190eca"
+  integrity sha512-QQzGmbFYs1ydxeTMVMt42/0Wec1anqzHmcR32QxcOgECQwGXqLZIqv/xL3qC4/qzArN/X7jbkaOCMVrsfi+FkQ==
   dependencies:
     "@emotion/core" "10.0.14"
     "@emotion/is-prop-valid" "0.8.2"
