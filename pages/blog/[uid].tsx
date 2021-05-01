@@ -74,29 +74,6 @@ export default function Post({
               </Paragraph>
             </Container>
           )}
-          <HeroBase
-            backgroundVariant="color"
-            backgroundColor={data.banner && data.banner.url ? 'white' : 'primary600'}
-            textColor={data.banner && data.banner.url ? 'textPrimary' : 'white'}
-          >
-            {data.banner && (
-              <Container paddingX="0.75rem" paddingY="0.5rem">
-                <Image src={data.banner.url} width="100%" maxHeight={300} objectPosition="center" objectFit="cover" />
-              </Container>
-            )}
-            <Container marginY="1rem" display="flex" alignItems="center" justifyContent="center">
-              <Tag use={Link} {...categoryLinkProps} color="white" palette="primary">
-                {category.data.category_name}
-              </Tag>
-              <Paragraph marginTop="0px" marginLeft="1rem">
-                {moment(published_time).format('Do MMM YYYY')}
-              </Paragraph>
-            </Container>
-            <Container marginY="1.5rem" display="flex" flexDirection="column" alignItems="center">
-              <Heading use="h3">{RichText.asText(title)}</Heading>
-              <Paragraph>by {RichText.asText(author)}</Paragraph>
-            </Container>
-          </HeroBase>
         </>
       }
       pageMeta={{
@@ -105,31 +82,24 @@ export default function Post({
         imageUrl: data.banner && data.banner.url,
       }}
     >
-      <Container maxWidth="80vw">
-        <Columns>
-          {isTabletOrLarger && (
-            <Columns.Column spread={1}>
-              <Stack orientation="vertical" position="sticky" top="75px">
-                <EmailShareButton url={postUrl}>
-                  <EmailIcon size={48} round={true} />
-                </EmailShareButton>
-                <TwitterShareButton url={postUrl} title={`${title} by Eric Jiang!`}>
-                  <TwitterIcon size={48} round={true} />
-                </TwitterShareButton>
-                <LinkedinShareButton url={postUrl} title={`${title} by Eric Jiang!`} source={'https://ericjiang.dev'}>
-                  <LinkedinIcon size={48} round={true} />
-                </LinkedinShareButton>
-                <FacebookShareButton url={postUrl}>
-                  <FacebookIcon size={48} round={true} />
-                </FacebookShareButton>
-              </Stack>
-            </Columns.Column>
-          )}
-          <Columns.Column>
+      <div className="relative py-16 bg-white overflow-hidden">
+        <div className="relative px-4 sm:px-6 lg:px-8">
+          <div className="text-lg max-w-prose mx-auto">
+            <h1>
+              <span className="block text-base text-center text-indigo-600 font-semibold tracking-wide uppercase">
+                {moment(published_time).format('Do MMMM YYYY')}
+              </span>
+              <span className="mt-2 block text-3xl text-center leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+                {RichText.asText(title)}
+              </span>
+            </h1>
+            <p className="mt-8 text-xl text-gray-500 leading-8">{RichText.asText(summary)}</p>
+          </div>
+          <div className="mt-6 prose prose-indigo prose-lg text-gray-500 mx-auto">
             <PrismicRichTextWrapper richText={data.body} />
-          </Columns.Column>
-        </Columns>
-      </Container>
+          </div>
+        </div>
+      </div>
       {!isTabletOrLarger && (
         <Container marginY="1rem" display="flex" flexWrap="wrap" justifyContent="space-between">
           <ShareModal title={RichText.asText(title)} slug={`/blog/${uid}`} />

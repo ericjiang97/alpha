@@ -3,6 +3,7 @@ import React from 'react';
 import { Box, Image, Link, Paragraph } from 'bumbag';
 import { RichText as CustomRichText } from 'prismic-reactjs-custom';
 import { PrismicRichText } from 'prismic-reactjs-custom/dist/es/RichText.model';
+import Heading from './core/Heading';
 
 interface PrismicRichTextWrapperProps {
   richText: PrismicRichText;
@@ -14,21 +15,41 @@ const PrismicRichTextWrapper: React.FC<PrismicRichTextWrapperProps> = ({ richTex
       <CustomRichText
         richText={richText}
         paragraph={(props: any) => {
+          return <p className="my-2">{props.children}</p>;
+        }}
+        heading1={(props: any) => {
           return (
-            <Paragraph marginY="1.25rem" color="#777">
+            <Heading use="h2" className="my-4">
               {props.children}
-            </Paragraph>
+            </Heading>
+          );
+        }}
+        heading2={(props: any) => {
+          return (
+            <Heading use="h3" className="my-4">
+              {props.children}
+            </Heading>
+          );
+        }}
+        heading3={(props: any) => {
+          return (
+            <Heading use="h4" className="my-4">
+              {props.children}
+            </Heading>
+          );
+        }}
+        heading4={(props: any) => {
+          return (
+            <Heading use="h5" className="my-4">
+              {props.children}
+            </Heading>
           );
         }}
         image={(props: any) => {
-          return (
-            <Box width="100%" display="flex" justifyContent="center">
-              <Image src={props.src} alt={props.alt} marginX="auto" {...props} />
-            </Box>
-          );
+          return <img src={props.src} alt={props.alt} className="self-center" {...props} />;
         }}
         hyperlink={(props: any) => {
-          return <Link {...props} />;
+          return <a className="text-indigo-500 font-semibold" {...props} />;
         }}
         preformatted={(props: any) => {
           return (
