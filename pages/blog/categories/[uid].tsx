@@ -1,8 +1,7 @@
 import Prismic from 'prismic-javascript';
 
-import { Paragraph, Stack } from 'bumbag';
+import { Stack } from 'bumbag';
 import LinkButton from '../../../components/buttons/LinkButton';
-import HeroBase from '../../../components/core/HeroBase';
 
 import PageLayout from '../../../containers/layouts/PageLayout';
 import Custom404 from '../../404';
