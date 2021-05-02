@@ -2,7 +2,7 @@ import moment from 'moment';
 import Prismic from 'prismic-javascript';
 import React from 'react';
 
-import { Columns, Container, Divider, Heading, Icon, Paragraph, useBreakpoint } from 'bumbag';
+import { Columns, Container, Divider, Icon, Paragraph, useBreakpoint } from 'bumbag';
 import { RichText } from 'prismic-reactjs';
 
 import ShareModal from '../../components/modals/ShareModal';
@@ -25,6 +25,7 @@ import PrismicRichTextWrapper from '../../components/PrismicRichTextWrapper';
 import { client } from '../../config/prismic';
 import { PrismicBlogCategory, PrismicBlogPost } from '../../types/PrismicBlogPost';
 import { getBlogPostContent } from '../../utils/prismic';
+import Heading from '../../components/core/Heading';
 
 export default function Post({
   uid,
@@ -48,6 +49,9 @@ export default function Post({
 
   const endpoint = `/blog/${uid}`;
   // const postUrl = `https://ericjiang.dev${endpoint}`;
+
+  const readingTime = Math.floor(RichText.asText(data.body).split(' ').length / 200);
+  console.log(`Reading Time is ${readingTime}mins!`);
 
   return (
     <PageLayout
@@ -84,17 +88,19 @@ export default function Post({
       <div className="relative py-16 bg-white overflow-hidden">
         <div className="relative px-4 sm:px-6 lg:px-8">
           <div className="text-lg max-w-prose mx-auto">
-            <h1>
-              <span className="block text-base text-center text-indigo-600 font-semibold tracking-wide uppercase">
-                {moment(published_time).format('Do MMMM YYYY')}
-              </span>
-              <span className="mt-2 block text-3xl text-center leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
-                {RichText.asText(title)}
-              </span>
-            </h1>
+            <span className="block text-base text-center text-indigo-600 font-semibold tracking-wide uppercase">
+              {moment(published_time).format('Do MMMM YYYY')}
+            </span>
+            <Heading
+              use="h1"
+              className="mt-2 block text-3xl text-center leading-8 font-extrabold tracking-tight text-gray-900"
+            >
+              {RichText.asText(title)}
+            </Heading>
             <p className="mt-8 text-xl text-gray-500 leading-8">{RichText.asText(summary)}</p>
+            {data.banner && <img src={data.banner.url} />}
           </div>
-          <div className="mt-6 prose prose-indigo prose-lg text-gray-500 mx-auto">
+          <div className="mt-6 max-w-prose mx-auto prose-indigo prose-lg text-gray-500 mx-auto">
             <PrismicRichTextWrapper richText={data.body} />
           </div>
         </div>
