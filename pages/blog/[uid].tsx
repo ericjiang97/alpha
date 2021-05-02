@@ -2,25 +2,24 @@ import moment from 'moment';
 import Prismic from 'prismic-javascript';
 import React from 'react';
 
-import { Columns, Container, Divider, Heading, Icon, Image, Link, Paragraph, Stack, Tag, useBreakpoint } from 'bumbag';
+import { Columns, Container, Divider, Heading, Icon, Paragraph, useBreakpoint } from 'bumbag';
 import { RichText } from 'prismic-reactjs';
 
-import HeroBase from '../../components/core/HeroBase';
 import ShareModal from '../../components/modals/ShareModal';
 
 import PageLayout from '../../containers/layouts/PageLayout';
 import Custom404 from '../404';
 
-import {
-  EmailIcon,
-  EmailShareButton,
-  FacebookIcon,
-  FacebookShareButton,
-  LinkedinIcon,
-  LinkedinShareButton,
-  TwitterIcon,
-  TwitterShareButton,
-} from 'react-share';
+// import {
+//   EmailIcon,
+//   EmailShareButton,
+//   FacebookIcon,
+//   FacebookShareButton,
+//   LinkedinIcon,
+//   LinkedinShareButton,
+//   TwitterIcon,
+//   TwitterShareButton,
+// } from 'react-share';
 import BlogCard from '../../components/blog/BlogCard';
 import PrismicRichTextWrapper from '../../components/PrismicRichTextWrapper';
 import { client } from '../../config/prismic';
@@ -43,12 +42,12 @@ export default function Post({
   if (error) {
     return <Custom404 />;
   }
-  const { title, author, preview, published_time, category, summary } = data;
+  const { title, preview, published_time, summary } = data;
 
-  const categoryLinkProps = Link.useProps({ href: `/blog/categories/${category.uid}` });
+  // const categoryLinkProps = Link.useProps({ href: `/blog/categories/${category.uid}` });
 
   const endpoint = `/blog/${uid}`;
-  const postUrl = `https://ericjiang.dev${endpoint}`;
+  // const postUrl = `https://ericjiang.dev${endpoint}`;
 
   return (
     <PageLayout

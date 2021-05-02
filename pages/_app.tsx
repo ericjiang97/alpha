@@ -1,8 +1,8 @@
 import React from 'react';
 
+import { Provider as BumbagProvider, ToastManager } from 'bumbag';
 import App from 'next/app';
 import Head from 'next/head';
-import { Provider as BumbagProvider, ToastManager } from 'bumbag';
 
 import Footer from '../components/core/layout/Footer';
 

@@ -9,7 +9,7 @@ export interface InputFieldProps {
   onChange?: (e: any) => {};
 }
 
-const InputField: React.FC<InputFieldProps> = ({ inputType, label, value, onChange = (e: any) => {} }) => {
+const InputField: React.FC<InputFieldProps> = ({ inputType, label, value, onChange = () => {} }) => {
   return (
     <div className="mt-2">
       {label && <FormLabel>{label}</FormLabel>}

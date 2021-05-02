@@ -1,6 +1,5 @@
 import React from 'react';
 
-import { Box, Image, Link, Paragraph } from 'bumbag';
 import { RichText as CustomRichText } from 'prismic-reactjs-custom';
 import { PrismicRichText } from 'prismic-reactjs-custom/dist/es/RichText.model';
 import Heading from './core/Heading';
