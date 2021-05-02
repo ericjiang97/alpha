@@ -112,9 +112,7 @@ export default function Post({
       )}
       <Divider />
       <Container marginY="1.25rem" padding="1rem">
-        <Heading use="h3" fontSize="400">
-          Enjoyed the post? You might want to read similar posts:
-        </Heading>
+        <Heading use="h3">Enjoyed the post? You might want to read similar posts:</Heading>
         <Columns marginTop="1rem">
           {similarPosts.results.map((post) => {
             return (
